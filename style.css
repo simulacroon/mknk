@@ -1,0 +1,198 @@
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter', sans-serif;
+  background:white;
+  color:black;
+  overflow-x:hidden;
+}
+
+/* MENU */
+
+.menu{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:30px 60px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  z-index:10;
+}
+
+.menu ul{
+  list-style:none;
+  display:flex;
+  gap:40px;
+}
+
+.menu li{
+  font-size:14px;
+  letter-spacing:1px;
+  cursor:pointer;
+  opacity:.7;
+  transition:.3s;
+}
+
+.menu li:hover{
+  opacity:1;
+}
+
+/* HERO */
+
+.hero{
+  height:100vh;
+  width:100%;
+  position:relative;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+}
+
+/* VIDEO BACK */
+
+.hero-video{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-1;
+  opacity:.25;
+}
+
+/* TEXTO BRILLANTE TRANSPARENTE */
+
+.main-title{
+  font-size:14vw;
+  font-weight:800;
+  letter-spacing:-0.04em;
+
+  color:transparent;
+
+  background:linear-gradient(
+    120deg,
+    rgba(0,0,0,0.9),
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.9)
+  );
+
+  background-size:200% auto;
+  background-clip:text;
+  -webkit-background-clip:text;
+
+  animation:shine 6s linear infinite;
+}
+
+/* BRILLO SUAVE */
+
+@keyframes shine{
+  to{
+    background-position:200% center;
+  }
+}
+
+
+/* TYPEWRITER FOOTER */
+
+.type-container{
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+
+  width:90%;
+  text-align:center;
+  pointer-events:none;
+}
+
+#typeText{
+  font-family: "Courier New", monospace;
+  font-size:12px;
+  color:#ff2b2b;
+
+  letter-spacing:1px;
+  opacity:.85;
+
+  max-width:900px;
+  margin:auto;
+
+  white-space:pre-wrap;   /* ← permite saltos */
+  word-break:break-word;  /* ← divide palabras largas */
+
+  line-height:1.6;
+  text-align:center;
+
+  border-right:1px solid #ff2b2b;
+  padding-right:5px;
+
+  animation:blinkCursor 1s infinite;
+}
+
+/* cursor blink */
+
+@keyframes blinkCursor{
+  50%{
+    border-color:transparent;
+  }
+}
+
+/* ===== TICKER LOOP TEXT ===== */
+
+.ticker{
+  position:absolute;
+  bottom:30px;
+  width:100%;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+.ticker-track{
+  display:flex;
+  width:max-content;
+
+  animation:tickerMove 50s linear infinite;
+}
+
+.ticker span{
+  font-family:"Courier New", monospace;
+  font-size:12px;
+  color:#ff2b2b;
+
+  letter-spacing:1px;
+  white-space:nowrap;
+
+  padding-right:80px;
+  opacity:.8;
+}
+
+/* movimiento infinito */
+
+@keyframes tickerMove{
+  from{
+    transform:translateX(0);
+  }
+  to{
+    transform:translateX(-50%);
+  }
+}
+
+
+.ticker{
+  mask-image:linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
