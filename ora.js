@@ -35,8 +35,10 @@ function dibujar() {
     let g = Math.floor(Math.random() * 255);
     let b = Math.floor(Math.random() * 255);
 
-    ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
+    let saturacion = Math.min(100, 80 + velocidad);
 
+    ctx.fillStyle = `hsl(${hue}, ${saturacion}%, 60%)`;
+    
     // efecto pixel (cuadrados)
     ctx.fillRect(
         Math.floor(mouse.x / size) * size,
