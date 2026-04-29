@@ -27,19 +27,15 @@ window.addEventListener("mousemove", (e) => {
 // pincel pixelado
 function dibujar() {
 
-    // tamaño del pixel
     let size = 10;
 
-    // color dinámico
+    // color random (simple y funcional)
     let r = Math.floor(Math.random() * 255);
     let g = Math.floor(Math.random() * 255);
     let b = Math.floor(Math.random() * 255);
 
-    let saturacion = Math.min(100, 80 + velocidad);
+    ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
 
-    ctx.fillStyle = `hsl(${hue}, ${saturacion}%, 60%)`;
-    
-    // efecto pixel (cuadrados)
     ctx.fillRect(
         Math.floor(mouse.x / size) * size,
         Math.floor(mouse.y / size) * size,
@@ -53,17 +49,15 @@ window.addEventListener("click", (e) => {
 
     let mensaje = document.getElementById("mensaje");
 
-    // frase aleatoria
     let texto = frases[Math.floor(Math.random() * frases.length)];
 
     mensaje.innerText = texto;
 
-    mensaje.style.left = e.clientX + "px";
-    mensaje.style.top = e.clientY + "px";
+    mensaje.style.left = (e.clientX + 10) + "px";
+    mensaje.style.top = (e.clientY + 10) + "px";
 
     mensaje.style.opacity = 1;
 
-    // desaparece
     setTimeout(() => {
         mensaje.style.opacity = 0;
     }, 2000);
