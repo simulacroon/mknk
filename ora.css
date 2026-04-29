@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: black;
+    cursor: none; /* ocultamos cursor real */
+}
+
+/* canvas ocupa toda la pantalla */
+canvas {
+    display: block;
+}
+
+/* burbuja de mensaje */
+#mensaje {
+    position: absolute;
+    color: white;
+    background: rgba(0,0,0,0.8);
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-family: monospace;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
