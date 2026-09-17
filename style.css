@@ -1,198 +1,861 @@
-/* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+:root {
+  --ink: #111;
+  --paper: #f2f2f0;
+  --side-space: 150px;
+  --pointer-x: 50%;
 }
 
-body{
-  font-family:'Inter', sans-serif;
-  background:white;
-  color:black;
-  overflow-x:hidden;
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* MENU */
-
-.menu{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:30px 60px;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  z-index:10;
+html {
+  scroll-behavior: smooth;
 }
 
-.menu ul{
-  list-style:none;
-  display:flex;
-  gap:40px;
+body {
+  font-family: "Inter", sans-serif;
+
+  background:
+    radial-gradient(
+      circle at var(--pointer-x) 20%,
+      #ffffff 0,
+      #f3f3f1 42%,
+      #dfdfdc 100%
+    );
+
+  color: var(--ink);
+  overflow-x: hidden;
 }
 
-.menu li{
-  font-size:14px;
-  letter-spacing:1px;
-  cursor:pointer;
-  opacity:.7;
-  transition:.3s;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.menu li:hover{
-  opacity:1;
+img,
+video {
+  display: block;
+  max-width: 100%;
 }
 
-/* HERO */
 
-.hero{
-  height:100vh;
-  width:100%;
-  position:relative;
+/* =========================================
+   CABECERA SUPERIOR
+========================================= */
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
 
-  overflow:hidden;
+  z-index: 30;
+
+  display: grid;
+
+  grid-template-columns:
+    105px
+    minmax(0, 1fr)
+    var(--side-space);
+
+  align-items: start;
+  gap: 26px;
+
+  padding: 14px 20px;
+
+  pointer-events: none;
+
+  mix-blend-mode: difference;
+  color: #ffffff;
 }
 
-/* VIDEO BACK */
 
-.hero-video{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:-1;
-  opacity:.25;
+/* LOGO */
+
+.logo {
+  width: max-content;
+
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 15px;
+
+  letter-spacing: -0.08em;
+
+  pointer-events: auto;
 }
 
-/* TEXTO BRILLANTE TRANSPARENTE */
 
-.main-title{
-  font-size:14vw;
-  font-weight:800;
-  letter-spacing:-0.04em;
+/* =========================================
+   MINIATURAS SUPERIORES
+========================================= */
 
-  color:transparent;
+.project-strip {
+  display: flex;
+  gap: 5px;
 
-  background:linear-gradient(
-    120deg,
-    rgba(0,0,0,0.9),
-    rgba(0,0,0,0.2),
-    rgba(0,0,0,0.9)
+  overflow-x: auto;
+
+  scrollbar-width: none;
+
+  pointer-events: auto;
+}
+
+.project-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.project-strip a {
+  flex: 0 0 60px;
+
+  height: 43px;
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  overflow: hidden;
+
+  opacity: 0.72;
+
+  transition:
+    opacity 0.25s,
+    transform 0.25s;
+}
+
+.project-strip a:hover {
+  opacity: 1;
+  transform: translateY(3px);
+}
+
+.project-strip img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter:
+    grayscale(1)
+    contrast(1.15);
+}
+
+
+/* =========================================
+   MENÚ VERTICAL DERECHO
+========================================= */
+
+.side-menu {
+  position: fixed;
+
+  z-index: 40;
+
+  top: 50%;
+  right: 20px;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 12px;
+
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+
+  mix-blend-mode: difference;
+
+  color: #ffffff;
+}
+
+.side-menu a {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  opacity: 0.5;
+
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+
+.side-menu a span {
+  font-size: 8px;
+  opacity: 0.65;
+}
+
+.side-menu a::after {
+  content: "";
+
+  width: 5px;
+  height: 5px;
+
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+.side-menu a:hover,
+.side-menu a.active {
+  opacity: 1;
+  transform: translateX(-4px);
+}
+
+.side-menu a.active::after {
+  background: currentColor;
+}
+
+
+/* =========================================
+   CONTENEDOR DE VIDEOS
+========================================= */
+
+/*
+  El contenedor mide 200vh para generar el
+  recorrido necesario entre los dos videos.
+*/
+
+.video-showcase {
+  position: relative;
+
+  height: 200vh;
+
+  background: #d9d9d6;
+}
+
+/*
+  El escenario permanece fijo mientras
+  recorremos la sección.
+*/
+
+.video-stage {
+  position: sticky;
+
+  top: 0;
+
+  height: 100vh;
+
+  overflow: hidden;
+
+  background: #d9d9d6;
+}
+
+
+/* VIDEOS SUPERPUESTOS */
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  will-change:
+    opacity,
+    transform;
+}
+
+.video-one {
+  opacity: 1;
+}
+
+.video-two {
+  opacity: 0;
+  transform: scale(1.035);
+}
+
+
+/* SOMBRA SOBRE EL VIDEO */
+
+.video-shade {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.08),
+      transparent 55%,
+      rgba(0, 0, 0, 0.22)
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   TÍTULO PRINCIPAL
+========================================= */
+
+.main-title {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  font-size: clamp(
+    80px,
+    17vw,
+    280px
   );
 
-  background-size:200% auto;
-  background-clip:text;
-  -webkit-background-clip:text;
+  font-weight: 800;
+  line-height: 0.78;
 
-  animation:shine 6s linear infinite;
+  letter-spacing: -0.09em;
+
+  color: transparent;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(255, 255, 255, 0.92),
+      rgba(255, 255, 255, 0.12),
+      rgba(0, 0, 0, 0.78)
+    );
+
+  background-size: 220% auto;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  animation:
+    shine 7s linear infinite;
+
+  mix-blend-mode: difference;
 }
 
-/* BRILLO SUAVE */
-
-@keyframes shine{
-  to{
-    background-position:200% center;
+@keyframes shine {
+  to {
+    background-position: 220% center;
   }
 }
 
 
-/* TYPEWRITER FOOTER */
+/* =========================================
+   INFORMACIÓN SOBRE LOS VIDEOS
+========================================= */
 
-.type-container{
-  position:absolute;
-  bottom:30px;
-  left:50%;
-  transform:translateX(-50%);
+.video-index,
+.scroll-note {
+  position: absolute;
 
-  width:90%;
-  text-align:center;
-  pointer-events:none;
+  z-index: 2;
+
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+
+  color: #ffffff;
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  mix-blend-mode: difference;
 }
 
-#typeText{
-  font-family: "Courier New", monospace;
-  font-size:12px;
-  color:#ff2b2b;
-
-  letter-spacing:1px;
-  opacity:.85;
-
-  max-width:900px;
-  margin:auto;
-
-  white-space:pre-wrap;   /* ← permite saltos */
-  word-break:break-word;  /* ← divide palabras largas */
-
-  line-height:1.6;
-  text-align:center;
-
-  border-right:1px solid #ff2b2b;
-  padding-right:5px;
-
-  animation:blinkCursor 1s infinite;
+.video-index {
+  top: 78px;
+  left: 20px;
 }
 
-/* cursor blink */
+.scroll-note {
+  right: 20px;
+  bottom: 68px;
+}
 
-@keyframes blinkCursor{
-  50%{
-    border-color:transparent;
+
+/* =========================================
+   TEXTO EN MOVIMIENTO
+========================================= */
+
+.ticker {
+  position: absolute;
+
+  z-index: 3;
+
+  bottom: 22px;
+
+  width: 100%;
+
+  overflow: hidden;
+  pointer-events: none;
+
+  mask-image:
+    linear-gradient(
+      to right,
+      transparent,
+      #000000 8%,
+      #000000 92%,
+      transparent
+    );
+
+  -webkit-mask-image:
+    linear-gradient(
+      to right,
+      transparent,
+      #000000 8%,
+      #000000 92%,
+      transparent
+    );
+}
+
+.ticker-track {
+  display: flex;
+
+  width: max-content;
+
+  animation:
+    tickerMove 44s linear infinite;
+}
+
+.ticker span {
+  padding-right: 70px;
+
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+
+  color: #ff4b4b;
+
+  letter-spacing: 0.08em;
+
+  white-space: nowrap;
+}
+
+@keyframes tickerMove {
+  to {
+    transform: translateX(-50%);
   }
 }
 
-/* ===== TICKER LOOP TEXT ===== */
 
-.ticker{
-  position:absolute;
-  bottom:30px;
-  width:100%;
-  overflow:hidden;
-  pointer-events:none;
+/* =========================================
+   SECCIONES GENERALES
+========================================= */
+
+.content-section {
+  min-height: 100vh;
+
+  padding:
+    110px
+    var(--side-space)
+    110px
+    7vw;
+
+  border-top:
+    1px solid
+    rgba(0, 0, 0, 0.18);
 }
 
-.ticker-track{
-  display:flex;
-  width:max-content;
+.section-heading {
+  display: grid;
 
-  animation:tickerMove 50s linear infinite;
+  grid-template-columns:
+    1fr
+    2fr;
+
+  gap: 40px;
+
+  align-items: start;
+
+  margin-bottom: 70px;
 }
 
-.ticker span{
-  font-family:"Courier New", monospace;
-  font-size:12px;
-  color:#ff2b2b;
+.section-heading p,
+.project-card span,
+.member-grid span {
+  font-family: "Space Mono", monospace;
+  font-size: 9px;
 
-  letter-spacing:1px;
-  white-space:nowrap;
-
-  padding-right:80px;
-  opacity:.8;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-/* movimiento infinito */
+.section-heading h2 {
+  font-family: "Space Mono", monospace;
 
-@keyframes tickerMove{
-  from{
-    transform:translateX(0);
-  }
-  to{
-    transform:translateX(-50%);
-  }
-}
-
-
-.ticker{
-  mask-image:linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
+  font-size: clamp(
+    52px,
+    9vw,
+    150px
   );
+
+  font-weight: 700;
+  line-height: 0.8;
+
+  letter-spacing: -0.08em;
+  text-transform: uppercase;
+}
+
+.intro-copy {
+  max-width: 930px;
+
+  margin:
+    0
+    0
+    70px
+    auto;
+
+  font-size: clamp(
+    20px,
+    2.6vw,
+    42px
+  );
+
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+
+/* =========================================
+   INTEGRANTES
+========================================= */
+
+.member-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  border-top:
+    1px solid
+    var(--ink);
+
+  border-left:
+    1px solid
+    var(--ink);
+}
+
+.member-grid article {
+  min-height: 230px;
+
+  padding: 18px;
+
+  border-right:
+    1px solid
+    var(--ink);
+
+  border-bottom:
+    1px solid
+    var(--ink);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.member-grid h3 {
+  margin-top: auto;
+
+  font-size: 22px;
+
+  letter-spacing: -0.04em;
+}
+
+.member-grid p {
+  max-width: 230px;
+
+  margin-top: 8px;
+
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+
+/* =========================================
+   PROYECTOS
+========================================= */
+
+.projects {
+  background: #111111;
+  color: #f4f4f0;
+}
+
+.project-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    70px
+    16px;
+}
+
+.project-card {
+  scroll-margin-top: 90px;
+}
+
+.project-card img {
+  width: 100%;
+
+  height: min(
+    48vw,
+    520px
+  );
+
+  object-fit: cover;
+
+  filter: grayscale(1);
+
+  transition:
+    filter 0.4s,
+    transform 0.5s;
+}
+
+.project-card:hover img {
+  filter: grayscale(0);
+
+  transform: scale(0.985);
+}
+
+.project-card div {
+  display: grid;
+
+  grid-template-columns:
+    90px
+    1fr;
+
+  gap: 12px;
+
+  padding-top: 14px;
+}
+
+.project-card h3 {
+  font-size: clamp(
+    24px,
+    3vw,
+    48px
+  );
+
+  line-height: 0.92;
+
+  letter-spacing: -0.05em;
+}
+
+.project-card p {
+  grid-column: 2;
+
+  max-width: 560px;
+
+  font-size: 12px;
+  line-height: 1.45;
+
+  opacity: 0.7;
+}
+
+
+/* =========================================
+   PIE DE PÁGINA / CONTACTO
+========================================= */
+
+footer {
+  min-height: 55vh;
+
+  padding:
+    80px
+    var(--side-space)
+    80px
+    7vw;
+
+  background:
+    linear-gradient(
+      115deg,
+      #111111,
+      #888888 58%,
+      #eeeeee
+    );
+
+  color: #ffffff;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+footer div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+
+  text-align: right;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  :root {
+    --side-space: 26px;
+  }
+
+  .site-header {
+    grid-template-columns:
+      76px
+      1fr;
+
+    padding: 12px;
+  }
+
+  .project-strip a {
+    flex-basis: 46px;
+
+    height: 36px;
+  }
+
+  .side-menu {
+    top: auto;
+    right: 12px;
+    bottom: 15px;
+
+    transform: none;
+
+    gap: 8px;
+
+    padding: 8px;
+
+    background:
+      rgba(0, 0, 0, 0.15);
+
+    backdrop-filter:
+      blur(8px);
+  }
+
+  .side-menu a span {
+    display: none;
+  }
+
+  .content-section {
+    padding:
+      90px
+      20px;
+  }
+
+  .section-heading {
+    display: block;
+
+    margin-bottom: 45px;
+  }
+
+  .section-heading p {
+    margin-bottom: 22px;
+  }
+
+  .member-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+  }
+
+  .project-card img {
+    height: 72vw;
+  }
+
+  footer {
+    padding:
+      60px
+      20px
+      110px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 40px;
+  }
+
+  footer div {
+    text-align: left;
+  }
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 520px) {
+
+  .main-title {
+    font-size: 24vw;
+  }
+
+  .scroll-note {
+    right: 12px;
+    bottom: 78px;
+  }
+
+  .video-index {
+    left: 12px;
+  }
+
+  .member-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .member-grid article {
+    min-height: 170px;
+  }
+
+  .project-card div {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card p {
+    grid-column: 1;
+  }
+}
+
+
+/* =========================================
+   ACCESIBILIDAD: REDUCIR MOVIMIENTO
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .main-title,
+  .ticker-track {
+    animation: none;
+  }
+
+  .project-card img,
+  .project-strip a,
+  .side-menu a {
+    transition: none;
+  }
 }
