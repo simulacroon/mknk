@@ -1,72 +1,122 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MK-NK — red de mujeres que mezcla música electrónica, visuales y artes vivas.">
+  <title>MK-NK</title>
 
-<title>MK-NK</title>
-
-<link rel="stylesheet" href="style.css">
-
-<!-- tipografía estilo coreano contemporáneo -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <header class="site-header">
+    <a class="logo" href="#inicio" aria-label="Ir al inicio">MK-NK</a>
 
-<!-- NAV -->
-<nav class="menu">
-  <div class="logo">MKNK</div>
+    <div class="project-strip" aria-label="Accesos rápidos a proyectos">
+      <a href="#jardines" aria-label="Jardines Digitales"><img src="img/1.jpeg" alt="Jardines Digitales"></a>
+      <a href="#ritmo" aria-label="Ritmo de Corte"><img src="img/2.jpeg" alt="Ritmo de Corte"></a>
+      <a href="#memorias" aria-label="Memorias Futuras"><img src="img/3.jpeg" alt="Memorias Futuras"></a>
+      <a href="#capullo" aria-label="Capullo Hz"><img src="img/4.jpeg" alt="Capullo Hz"></a>
+    </div>
+  </header>
 
-  <ul>
-  <li>Inicio</li>
-  <li><a href="ora.html" class="ora">orák</a></li>
-  <li>Contacto</li>
-</ul>
-</nav>
+  <nav class="side-menu" aria-label="Navegación principal">
+    <a href="#inicio" class="active"><span>01</span>Inicio</a>
+    <a href="#integrantes"><span>02</span>Integrantes</a>
+    <a href="#proyectos"><span>03</span>Proyectos</a>
+    <a href="ora.html"><span>04</span>Orák</a>
+    <a href="#contacto"><span>05</span>Contacto</a>
+  </nav>
 
+  <main>
+    <section class="video-showcase" id="inicio" aria-label="Portada audiovisual">
+      <div class="video-stage">
+        <video class="hero-video video-one" autoplay muted loop playsinline preload="auto">
+          <source src="video/risamakia_1.mp4" type="video/mp4">
+        </video>
 
-<!-- HERO -->
-<section class="hero">
+        <video class="hero-video video-two" autoplay muted loop playsinline preload="metadata">
+          <source src="video/manomeka_1.mp4" type="video/mp4">
+        </video>
 
-  <!-- VIDEO SPACE -->
-  <video class="hero-video" autoplay muted loop playsinline>
-      <!-- coloca aquí tu video -->
-      <source src="video/risamakia_1.mp4" type="video/mp4">
-  </video>
+        <div class="video-shade"></div>
+        <h1 class="main-title" aria-label="MK-NK">MK-NK</h1>
+        <p class="video-index" aria-hidden="true"><span class="current-video">01</span> : 02</p>
+        <p class="scroll-note">scroll para cambiar de señal ↓</p>
 
-  <!-- TEXTO CENTRAL -->
-  <h1 class="main-title">MK-NK</h1>
+        <div class="ticker" aria-label="Manifiesto MK-NK">
+          <div class="ticker-track">
+            <span>© MK-NK — hemos cometido muchas fallas y ya es hora de redimir nuestros sexuales corazones rotos. Nuestro sistema operativo dice basta. Nuestro aparato reproductor no es una radio a pilas; nuestra batería es recargable al inhalar o cerrar, a merced de nuestros párpados, nuestros ojos. Somos todo y no somos nada. Somos tortas, homo, travas, ladies, zorras, viejas, diosas. No queremos ser más parte de esta humanidad. v1.0 —</span>
+            <span aria-hidden="true">© MK-NK — hemos cometido muchas fallas y ya es hora de redimir nuestros sexuales corazones rotos. Nuestro sistema operativo dice basta. Nuestro aparato reproductor no es una radio a pilas; nuestra batería es recargable al inhalar o cerrar, a merced de nuestros párpados, nuestros ojos. Somos todo y no somos nada. Somos tortas, homo, travas, ladies, zorras, viejas, diosas. No queremos ser más parte de esta humanidad. v1.0 —</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="ticker">
-  <div class="ticker-track">
-    <span>
-      © MKNK hemos cometido muchas fallas y ya es hora de redimir a nuestros sexuales corazones rotos. nuestro sistema operativo dice basta.
-       nuestro aparato reproductor no es una radio a pilas, nuestra bateria es recargable al inahlar o cerrar a merced de nuestros párpados, 
-       nuestros ojos. somos todo y no somos nada, somos tortas, somos homo, somos travas, somos ladies, somos zorras, somos viejas, somos diosas,
-        no queremos ser más parte de esta humanidad. no queremos ser más parte de esta humanidad.no queremos ser más parte de esta humanidad.
-        no queremos ser más parte de esta humanidad.no queremos ser más parte de esta humanidad.no queremos ser más parte de esta humanidad.
-        no queremos ser más parte de esta humanidad.no queremos ser más parte de esta humanidad.no queremos ser más parte de esta humanidad.
-        no queremos ser más parte de esta humanidad. v1.0 —
-    </span>
+    <section class="content-section members" id="integrantes">
+      <div class="section-heading">
+        <p>PORTAFOLIO MK-NK / 2026</p>
+        <h2>Integrantes</h2>
+      </div>
 
-    <!-- duplicado para loop infinito -->
-    <span>
-       © MKNK hemos cometido muchas fallas y ya es hora de redimir a nuestros sexuales corazones rotos. nuestro sistema operativo dice basta.
-       nuestro aparato reproductor no es una radio a pilas, nuestra bateria es recargable al inahlar o cerrar a merced de nuestros párpados, 
-       nuestros ojos. somos todo y no somos nada, somos tortas, somos homo, somos travas, somos ladies, somos zorras, somos viejas, somos diosas,
-        no queremos ser más parte de esta humanidad. no queremos ser más parte de esta humanidad.no queremos ser más parte de esta humanidad.
-        no queremos ser más parte de esta humanidad.no queremos ser más parte de esta humanidad.no queremos ser más parte de esta humanidad.
-        no queremos ser más parte de esta humanidad.no queremos ser más parte de esta humanidad.no queremos ser más parte de esta humanidad.
-        no queremos ser más parte de esta humanidad. v1.0 —
-    </span>
-  </div>
-</div>
+      <div class="intro-copy">
+        <p>Colectivo interdisciplinar de mujeres que explora narrativas digitales y transmediales en el cruce con la música electrónica. Lo sonoro, lo visual y lo performativo se entrelazan para abrir nuevos territorios de creación y presencia femenina.</p>
+      </div>
 
-</section>
+      <div class="member-grid">
+        <article><span>01</span><h3>María Marín</h3><p>Realizadora audiovisual y videoartista.</p></article>
+        <article><span>02</span><h3>Laura Páez</h3><p>Cine, narrativas digitales, diseño sonoro y cuerpo cyborg.</p></article>
+        <article><span>03</span><h3>Daniela Ferrucho</h3><p>Diseño de modas, upcycling y experimentación plástica.</p></article>
+        <article><span>04</span><h3>Rotten</h3><p>Artista plástica transdisciplinar.</p></article>
+        <article><span>05</span><h3>María Paz</h3><p>Artista visual y creadora de paisajes móviles.</p></article>
+        <article><span>06</span><h3>Paula Tuaty</h3><p>Creadora de imágenes, collage y medios audiovisuales.</p></article>
+        <article><span>07</span><h3>Yulia Montenegro</h3><p>Bailarina, performer y gestora.</p></article>
+        <article><span>08</span><h3>Mercuria</h3><p>Músicx y compositora para medios audiovisuales.</p></article>
+      </div>
+    </section>
 
+    <section class="content-section projects" id="proyectos">
+      <div class="section-heading">
+        <p>ARCHIVO / NODOS ACTIVOS</p>
+        <h2>Proyectos</h2>
+      </div>
 
-<script src="script.js"></script>
+      <div class="project-grid">
+        <article class="project-card" id="jardines">
+          <img src="img/1.jpeg" alt="Registro de Jardines Digitales" loading="lazy">
+          <div><span>[Nodo 0,0]</span><h3>Jardines Digitales</h3><p>VJ en vivo, entornos orgánicos y sintéticos sincronizados con sets de techno.</p></div>
+        </article>
+
+        <article class="project-card" id="ritmo">
+          <img src="img/2.jpeg" alt="Registro de Ritmo de Corte" loading="lazy">
+          <div><span>[Nodo 0,2]</span><h3>Ritmo de Corte</h3><p>Conectarse a la máquina para activar fragmentos y componer escenas en tiempo real.</p></div>
+        </article>
+
+        <article class="project-card" id="memorias">
+          <img src="img/3.jpeg" alt="Registro de Memorias Futuras" loading="lazy">
+          <div><span>[Nodo 3,1]</span><h3>Memorias Futuras</h3><p>Cuerpos híbridos, píxeles tangibles, machine learning y sistemas audiovisuales reactivos.</p></div>
+        </article>
+
+        <article class="project-card" id="capullo">
+          <img src="img/4.jpeg" alt="Registro de Capullo Hz" loading="lazy">
+          <div><span>[Nodo 4,2]</span><h3>Capullo Hz</h3><p>Instalación escénica para video mapping y sonido experimental.</p></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <p>MK-NK / BOGOTÁ / 2026</p>
+    <div>
+      <a href="https://www.instagram.com/w._.w.__.w._.w/" target="_blank" rel="noreferrer">@w._.w.__.w._.w</a>
+      <a href="mailto:m3kanik4@gmail.com">m3kanik4@gmail.com</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
