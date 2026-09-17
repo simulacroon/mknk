@@ -2,28 +2,17 @@
    ELEMENTOS PRINCIPALES
 ========================================= */
 
-const showcase =
-  document.querySelector(".video-showcase");
-
-const firstVideo =
-  document.querySelector(".video-one");
-
-const secondVideo =
-  document.querySelector(".video-two");
-
-const videoCounter =
-  document.querySelector(".current-video");
+const showcase = document.querySelector(".video-showcase");
+const firstVideo = document.querySelector(".video-one");
+const secondVideo = document.querySelector(".video-two");
+const videoCounter = document.querySelector(".current-video");
 
 const menuLinks = [
-  ...document.querySelectorAll(
-    '.side-menu a[href^="#"]'
-  )
+  ...document.querySelectorAll('.side-menu a[href^="#"]')
 ];
 
 const sections = [
-  ...document.querySelectorAll(
-    "main section[id], footer[id]"
-  )
+  ...document.querySelectorAll("main section[id], footer[id]")
 ];
 
 
@@ -35,8 +24,7 @@ const nodeButtons = [
   ...document.querySelectorAll(".node-point")
 ];
 
-const nodeDetail =
-  document.querySelector(".node-detail");
+const nodeDetail = document.querySelector(".node-detail");
 
 
 /* =========================================
@@ -46,7 +34,6 @@ const nodeDetail =
 const nodeContent = {
   reflejos: {
     code: "NODO 01 / MATERIAL + ÍNTIMO",
-
     title: "Reflejos invisibles",
 
     copy:
@@ -63,7 +50,6 @@ const nodeContent = {
 
   ritmo: {
     code: "NODO 02 / CUERPO + MÁQUINA",
-
     title: "Ritmo de corte",
 
     copy:
@@ -80,7 +66,6 @@ const nodeContent = {
 
   paso: {
     code: "NODO 03 / MATERIAL + COLECTIVO",
-
     title: "Dar el primer paso",
 
     copy:
@@ -97,7 +82,6 @@ const nodeContent = {
 
   memorias: {
     code: "NODO 04 / DIGITAL + COLECTIVO",
-
     title: "Memorias futuras",
 
     copy:
@@ -115,14 +99,10 @@ const nodeContent = {
 
 
 /* =========================================
-   LIMITAR UN VALOR ENTRE 0 Y 1
+   LIMITAR VALORES ENTRE 0 Y 1
 ========================================= */
 
-function clamp(
-  value,
-  min = 0,
-  max = 1
-) {
+function clamp(value, min = 0, max = 1) {
   return Math.min(
     Math.max(value, min),
     max
@@ -143,33 +123,27 @@ function updateVideoTransition() {
     return;
   }
 
-  const rect =
-    showcase.getBoundingClientRect();
+  const rect = showcase.getBoundingClientRect();
 
   const scrollableDistance =
-    showcase.offsetHeight -
-    window.innerHeight;
+    showcase.offsetHeight - window.innerHeight;
 
   const progress =
     scrollableDistance > 0
-      ? clamp(
-          -rect.top /
-          scrollableDistance
-        )
+      ? clamp(-rect.top / scrollableDistance)
       : 0;
 
   /*
     La transición comienza aproximadamente
-    al completar el 28 % del recorrido.
+    al llegar al 28 % del recorrido.
 
-    El cambio se desarrolla durante
+    El fundido se completa durante
     el siguiente 44 %.
   */
 
-  const fade =
-    clamp(
-      (progress - 0.28) / 0.44
-    );
+  const fade = clamp(
+    (progress - 0.28) / 0.44
+  );
 
   firstVideo.style.opacity =
     String(1 - fade);
@@ -191,25 +165,23 @@ function updateVideoTransition() {
   }
 
   /*
-    Activa el segundo video cuando
-    empieza a hacerse visible.
+    Inicia el segundo video cuando
+    comienza a hacerse visible.
   */
 
   if (fade > 0.05) {
-    secondVideo
-      .play()
-      .catch(() => {
-        /*
-          Algunos navegadores pueden
-          bloquear la reproducción automática.
-        */
-      });
+    secondVideo.play().catch(() => {
+      /*
+        Algunos navegadores pueden bloquear
+        la reproducción automática.
+      */
+    });
   }
 }
 
 
 /* =========================================
-   SECCIÓN ACTIVA DEL MENÚ
+   ACTUALIZAR LA SECCIÓN ACTIVA DEL MENÚ
 ========================================= */
 
 function updateActiveMenu() {
@@ -220,9 +192,7 @@ function updateActiveMenu() {
 
   sections.forEach((section) => {
     const sectionTop =
-      section
-        .getBoundingClientRect()
-        .top;
+      section.getBoundingClientRect().top;
 
     if (sectionTop <= marker) {
       currentId = section.id;
@@ -246,8 +216,7 @@ function updateActiveMenu() {
 ========================================= */
 
 function selectNode(nodeKey) {
-  const selected =
-    nodeContent[nodeKey];
+  const selected = nodeContent[nodeKey];
 
   if (
     !selected ||
@@ -258,7 +227,7 @@ function selectNode(nodeKey) {
 
   /*
     Actualiza el estado visual y accesible
-    de los botones del plano.
+    de los puntos del plano cartesiano.
   */
 
   nodeButtons.forEach((button) => {
@@ -277,7 +246,7 @@ function selectNode(nodeKey) {
   });
 
   /*
-    Actualiza la ficha situada
+    Actualiza la información situada
     junto al plano cartesiano.
   */
 
@@ -336,7 +305,7 @@ function onScroll() {
 
 
 /* =========================================
-   FONDO REACTIVO AL CURSOR
+   FONDO REACTIVO AL MOVIMIENTO DEL CURSOR
 ========================================= */
 
 document.addEventListener(
